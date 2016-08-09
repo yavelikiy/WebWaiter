@@ -1,0 +1,125 @@
+.pad-number{
+	background-color: #424242;
+	color: white;
+	font-size: 3.5em;
+	cursor: pointer;
+}
+.pad-number:focus{
+	background-color: #616161;
+}
+
+.pad-ok{
+	background-color: #64DD17;
+	font-size: 3.5em;
+	cursor: pointer;
+}
+.pad-ok:focus{
+	background-color: #76FF03;
+}
+
+.pad-cancel{
+	background-color: #F44336;
+	font-size: 3.5em;
+	cursor: pointer;
+}
+.pad-cancel:focus{
+	background-color: #EF5350;
+}
+
+.pad-input{
+	background-color: #26C6DA;
+	font-size: 5em;
+}
+
+.pad-input-title{
+	color: #00838F;
+}
+
+.pad-input-value{
+	color: white;
+}
+
+.pad-text{
+	color: #64DD17;
+}
+
+.ingredient-tile{
+	width : auto;
+	list-style-type: none;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.ingredient-tile-number{
+	background: rgba(0,0,0,.18);
+}
+
+.ingredient-tile-name{
+    text-overflow: ellipsis;
+}
+/*
+.default-ingredient{
+	background: #64DD17;
+}*/
+
+.deleted-ingredient{
+	background: #EF5350;
+}
+
+.ingredient-item-buttons{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top:0px;
+	z-index: 1;
+}
+
+.remove{
+	text-align: left;
+	font-size: 6em;
+	width: 50%;
+	color:#FFD6D6;
+	margin: auto;
+}
+
+.add{
+	text-align: right;
+	font-size: 6em;
+	width: 50%;
+	color:#CFE6B8;
+	margin: auto;
+}
+
+
+.ingredient-item-content{
+	z-index: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+
+}
+
+.ingredient-item-content div{
+	text-align: center;
+	width: 60%;
+}
+
+.ingredient-item-content div .name{
+	font-size: 1.2em;
+}
+.ingredient-item-content div .code{
+	font-size: 1em;
+	color: #777;
+}
+
+.ingredient-item-content .count{
+	text-align: left;
+	font-size: 3em;
+	color: #555;	
+	width: 40%;
+	margin: auto;
+}
+

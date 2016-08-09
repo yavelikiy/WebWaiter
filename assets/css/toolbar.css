@@ -1,0 +1,10 @@
+.toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
+  color: white; }
+
+  .added.md-button.md-default-theme:not([disabled]):hover, .added.md-button:not([disabled]):hover{
+  	background-color: #63DD17;  	
+  }
+
+  .deleted.md-button.md-default-theme:not([disabled]):hover, .deleted.md-button:not([disabled]):hover{
+  	background-color: #63DD17;  	
+  }

@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>Restourant - Alfonso</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+    <link rel="stylesheet" href="../../../assets/css/angular-material.min.css"/>
+    <link rel="stylesheet" href="../../../assets/css/toolbar.css"/>
+    <link rel="stylesheet" href="../../../assets/css/codepad.css"/>
+  </head>
+
+  <body ng-app="menuApp" layout="column" ng-controller="IngredientController as il">
+    
+    <md-toolbar ng-conteroller="ingredientToolbarCtrl">
+      <div class="md-toolbar-tools">
+      	<md-button aria-label="Cancel" ng-click="goBackWithoutSaving();">
+            <md-icon md-svg-icon="../../../assets/img/ic_arrow_back_black_36px.svg"></md-icon>
+      	</md-button>
+      	<h2>
+      	  <span>{{il.lable}}</span>
+      	</h2>
+      	<span flex></span>
+      	<md-button class="md-fab md-mini" aria-label="Save">
+      	  <md-icon md-svg-icon="../../../assets/img/ic_check_black_36px.svg"></md-icon>
+      	</md-button>
+      </div>
+    </md-toolbar>
+    
+    <div layout="row" flex>
+      <md-content flex-gt-sm="20"  layout="row">
+    	  <md-list flex>
+    	    <md-subheader class="md-no-sticky">Текущие ингредиенты</md-subheader>
+          <md-list-item class="md-1-line {{ item.status }} " ng-repeat="item in il.ingredients">
+              <div class="ingredient-item-buttons" layout="row">
+                <md-button class="remove" ng-click="il.dec(item.id, item.name);">-</md-button>
+                <md-button class="add" ng-click="il.inc(item.id);">+</md-button>
+              </div>
+              <div class="ingredient-item-content" layout="row">
+                <div layout="column">
+                  <span class="name">{{ item.name }}</span>
+                  <span class="code">{{ item.code }}</span>
+                </div>
+                <div class="count">{{ item.count }}</div>
+    	       </div>
+    	    </md-list-item>
+    	  </md-list>
+      </md-content>
+      <md-content  flex>
+        <div ng-controller="AllIngredientController as al" ng-cloak ng-show="il.isIngredientList" flex>
+          <md-grid-list
+    	    md-cols="1" md-cols-sm="3" md-cols-md="6" md-cols-gt-md="12"
+    	    md-row-height="2:1"
+    	    md-gutter="4px" md-gutter-gt-sm="2px" >
+          	<md-grid-tile ng-repeat="tile in al.ingredients"
+          		      style="{{tile.style.background}}{{tile.style.foreground}}"
+          		      ng-click="il.addIngredient(tile.code, tile.name);">
+              <ul class="ingredient-tile">
+                <li class="ingredient-tile-name">{{tile.shortName}}</li>
+                <li class="ingredient-tile-number" style="{{tile.style.foreground}};">{{tile.code}}</li>
+              </ul>
+          	</md-grid-tile>
+          </md-grid-list>
+        </div>
+        
+        <div flex ng-controller="CodePadController as cp" ng-cloak ng-hide="il.isIngredientList">
+          <md-grid-list
+          md-cols="3" md-row-height="3:1"
+          md-gutter-gt-sm="4px" >
+            <md-grid-tile md-colspan="3">
+                <div flex class="pad-input">
+                  <span class="pad-input-title">Код</span> <span class="pad-input-value">{{cp.currentCode}}</span>
+                </div>
+                <span class="pad-text">{{cp.itemName}}</span>
+                <span class="pad-error">{{cp.error}}</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(1);">
+              <span>1</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(2);">
+              <span>2</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(3);">
+              <span>3</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(4);">
+              <span>4</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(5);">
+              <span>5</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(6);">
+              <span>6</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(7);">
+              <span>7</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(8);">
+              <span>8</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(9);">
+              <span>9</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-ok" ng-click="cp.padClick(10);">
+              <span>Выбрать</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-number" ng-click="cp.padClick(0);">
+              <span>0</span>
+            </md-grid-tile>
+            <md-grid-tile class="pad-cancel" ng-click="cp.padClick(11);">
+              <span>Отмена</span>
+            </md-grid-tile>
+          </md-grid-list>
+        </div>
+      </md-content>
+    </div>  
+    <script src="../../../assets/js/angular/angular.min.js"></script>
+    <script src="../../../assets/js/angular/angular-animate.min.js"></script>
+    <script src="../../../assets/js/angular/angular-aria.min.js"></script>
+    <script src="../../../assets/js/angular/angular-material.min.js"></script>
+
+    <script src="Ingredients.js"></script>
+    <script src="IngredientController.js"></script>
+    <script src="IngredientService.js"></script>
+    <script src="AllIngredientController.js"></script>
+    <script src="AllIngredientService.js"></script>
+    <script src="CodePadController.js"></script>
+
+    <script type="text/javascript">
+          angular
+              .module('menuApp', ['ngMaterial', 'ingredients']);
+    </script>
+
+  </body>
+</html>
